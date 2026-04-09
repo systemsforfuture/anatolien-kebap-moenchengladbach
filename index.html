@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anatolien Kebap — Alter Markt Mönchengladbach</title>
+<meta name="description" content="Anatolien Kebap am Alter Markt in Mönchengladbach. Authentische türkische Küche, täglich ab 11:30 Uhr. Tel: 02161 175874.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent: #C0392B;
+    --accent-light: #e04435;
+    --accent-dim: rgba(192,57,43,0.15);
+    --accent-border: rgba(192,57,43,0.3);
+    --bg: #0a0905;
+    --bg2: #111009;
+    --bg3: #18160f;
+    --surface: rgba(255,255,255,0.04);
+    --surface2: rgba(255,255,255,0.07);
+    --text: #f2ede5;
+    --text-muted: rgba(242,237,229,0.5);
+    --text-faint: rgba(242,237,229,0.25);
+    --border: rgba(255,255,255,0.08);
+    --gold: #D4A843;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.4rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(10,9,5,0.96);
+    backdrop-filter: blur(16px);
+    padding: 1rem 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--accent);
+    color: white !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.12em;
+    font-weight: 500 !important;
+    transition: background 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--accent-light) !important; color: white !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 6rem;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to bottom, rgba(10,9,5,0.35) 0%, rgba(10,9,5,0.1) 40%, rgba(10,9,5,0.75) 75%, rgba(10,9,5,0.97) 100%),
+      url('https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=1800&q=85&fit=crop');
+    background-size: cover;
+    background-position: center 30%;
+    transform: scale(1.04);
+    transition: transform 8s ease;
+  }
+  .hero-bg.loaded { transform: scale(1); }
+
+  /* Red-white Turkish flag stripe accent */
+  .hero-flag {
+    position: absolute;
+    top: 0; right: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--accent) 50%, var(--bg) 50%);
+    opacity: 0.5;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 4rem;
+    max-width: 900px;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    color: var(--accent-light);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.45rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; align-items: center; }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    padding: 0.9rem 2.2rem;
+    border: none;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+  .btn-outline {
+    color: var(--text);
+    padding: 0.9rem 2.2rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--text-muted); color: var(--text); }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--accent);
+    padding: 1.6rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    margin-top: 0.2rem;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 4rem; }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+  }
+  h2 em { font-style: italic; color: var(--accent); }
+
+  /* ── ABOUT ── */
+  .about { background: var(--bg2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .about-img {
+    position: relative;
+    height: 520px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .about-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .about-img:hover img { transform: scale(1.04); }
+  .about-img-badge {
+    position: absolute;
+    bottom: 1.5rem; right: 1.5rem;
+    background: var(--accent);
+    color: white;
+    padding: 0.8rem 1.2rem;
+    text-align: center;
+    border-radius: 2px;
+  }
+  .about-img-badge .badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .about-img-badge .badge-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .about-text p {
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+  }
+  .about-features {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .feat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .feat-icon {
+    width: 32px; height: 32px;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  /* ── MENU ── */
+  .menu { background: var(--bg); }
+  .menu-header {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .menu-desc {
+    color: var(--text-muted);
+    max-width: 420px;
+    font-size: 1rem;
+  }
+  .menu-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+  }
+  .menu-card {
+    background: var(--bg);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .menu-card:hover { background: var(--bg3); }
+  .menu-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--accent);
+    transition: height 0.4s ease;
+  }
+  .menu-card:hover::before { height: 100%; }
+  .menu-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-faint);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .menu-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .menu-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .menu-card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ── GALLERY ── */
+  .gallery { background: var(--bg2); padding: 6rem 4rem; }
+  .gallery-title {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+  }
+  .gallery-mosaic {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 260px 260px;
+    gap: 6px;
+  }
+  .g-img { overflow: hidden; border-radius: 2px; }
+  .g-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+  .g-img:hover img { transform: scale(1.06); }
+  .g-1 { grid-column: 1 / 6; grid-row: 1 / 2; }
+  .g-2 { grid-column: 6 / 9; grid-row: 1 / 2; }
+  .g-3 { grid-column: 9 / 13; grid-row: 1 / 2; }
+  .g-4 { grid-column: 1 / 5; grid-row: 2 / 3; }
+  .g-5 { grid-column: 5 / 13; grid-row: 2 / 3; }
+
+  /* ── SPECIALS ── */
+  .specials { background: var(--bg3); }
+  .specials-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .specials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .special-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 2rem;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .special-card:hover {
+    border-color: var(--accent-border);
+    transform: translateY(-4px);
+  }
+  .special-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .special-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+  .special-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  /* ── REVIEWS ── */
+  .reviews { background: var(--bg); }
+  .reviews-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .review-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 2rem;
+  }
+  .review-stars {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .review-text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+  .review-author {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+  .review-platform {
+    font-size: 0.75rem;
+    color: var(--text-faint);
+  }
+
+  /* ── INFO ── */
+  .info { background: var(--bg2); }
+  .info-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 4rem;
+  }
+  .info-block h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: var(--text);
+  }
+  .info-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .info-line:last-child { border-bottom: none; }
+  .info-day { color: var(--text-muted); }
+  .info-time { color: var(--text); font-weight: 500; }
+  .info-time.late { color: var(--accent-light); }
+  .info-contact { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .contact-icon {
+    width: 32px; height: 32px;
+    background: var(--accent-dim);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .contact-label {
+    font-size: 0.7rem;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.1rem;
+  }
+  .contact-value {
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+  .contact-value a { color: var(--text); text-decoration: none; }
+  .contact-value a:hover { color: var(--accent); }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--bg);
+    text-align: center;
+    padding: 7rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 50%, var(--accent-dim), transparent);
+    pointer-events: none;
+  }
+  .cta-section h2 { margin: 0 auto 1rem; max-width: 700px; }
+  .cta-section p {
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    font-size: 1.05rem;
+  }
+  .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg3);
+    border-top: 1px solid var(--border);
+    padding: 3rem 4rem;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .footer-brand .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+  .footer-brand .brand-name span { color: var(--accent); }
+  .footer-brand p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  .footer-col h4 {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.5rem; }
+  .footer-col ul a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+  .footer-col ul a:hover { color: var(--text); }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-bottom p {
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+  .footer-bottom a {
+    color: var(--text-faint);
+    text-decoration: none;
+    font-size: 0.8rem;
+  }
+  .footer-bottom a:hover { color: var(--text-muted); }
+
+  /* ── COOKIE BANNER ── */
+  #cookie-banner {
+    position: fixed;
+    bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    width: min(640px, calc(100vw - 2rem));
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem 2rem;
+    z-index: 999;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  #cookie-banner p {
+    flex: 1;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    min-width: 200px;
+  }
+  #cookie-banner p a { color: var(--accent); text-decoration: none; }
+  .cookie-btns { display: flex; gap: 0.75rem; flex-shrink: 0; }
+  #cookie-accept {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    transition: background 0.3s;
+  }
+  #cookie-accept:hover { background: var(--accent-light); }
+  #cookie-decline {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 0.6rem 1.2rem;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: border-color 0.3s;
+  }
+  #cookie-decline:hover { border-color: var(--text-muted); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    nav.scrolled { padding: 0.8rem 1.5rem; }
+    .nav-links { display: none; }
+    section, .gallery, .cta-section { padding: 4rem 1.5rem; }
+    .hero-content { padding: 0 1.5rem; }
+    .hero h1 { font-size: 3rem; }
+    .stats-bar { padding: 1.2rem 1.5rem; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-img { height: 320px; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .g-1, .g-2, .g-3, .g-4, .g-5 { grid-column: auto; grid-row: auto; height: 200px; }
+    .specials-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .info-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">Anatolien <span>Kebap</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">Über uns</a></li>
+    <li><a href="#menu">Speisekarte</a></li>
+    <li><a href="#gallery">Galerie</a></li>
+    <li><a href="#info">Kontakt</a></li>
+    <li><a href="tel:+4921611758740" class="nav-cta">Anrufen</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-flag"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Alter Markt · Mönchengladbach · Täglich ab 11:30</div>
+    <h1>Echter<br>türkischer<br><em>Geschmack</em></h1>
+    <p class="hero-sub">
+      Frisch gegrilltes Fleisch, hausgemachte Saucen und Originalrezepte direkt aus Anatolien — seit Jahren das Original am Alter Markt.
+    </p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-primary">Speisekarte</a>
+      <a href="#info" class="btn-outline">Öffnungszeiten</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">4.0★</div>
+    <div class="stat-label">Google Bewertung</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">Tägl.</div>
+    <div class="stat-label">Ab 11:30 Uhr geöffnet</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">Fr/Sa</div>
+    <div class="stat-label">Bis 5:00 Uhr morgens</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Frisch zubereitet</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=900&q=85&fit=crop" alt="Türkisches Kebap frisch vom Grill">
+      <div class="about-img-badge">
+        <div class="badge-num">♥</div>
+        <div class="badge-label">Mönchengladbach</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <p class="section-eyebrow">Unsere Geschichte</p>
+      <h2>Das Original am <em>Alter Markt</em></h2>
+      <p>
+        Mitten im Herzen von Mönchengladbach, direkt am historischen Alter Markt, servieren wir täglich frisch zubereitetes türkisches Essen nach Originalrezepten.
+      </p>
+      <p>
+        Unser Döner wird mit sorgfältig gewürztem Fleisch vom Spieß geschnitten. Jeder Biss ein Stück Anatolien — herzlich, ehrlich, authentisch.
+      </p>
+      <p>
+        Ob schneller Mittagskick, Abendessen nach der Arbeit oder Late-Night-Hunger am Wochenende bis 5 Uhr morgens — wir sind da.
+      </p>
+      <div class="about-features">
+        <div class="feat-item">
+          <div class="feat-icon">🔥</div>
+          <span>Frisch vom Grill</span>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">🌙</div>
+          <span>Late Night Fr/Sa</span>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">🥙</div>
+          <span>Hausgemachte Saucen</span>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">📦</div>
+          <span>Takeaway verfügbar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="menu-header">
+    <div>
+      <p class="section-eyebrow">Speisekarte</p>
+      <h2>Unsere <em>Spezialitäten</em></h2>
+    </div>
+    <p class="menu-desc">Alle Gerichte werden frisch auf Bestellung zubereitet. Preise können variieren.</p>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-card-num">01</div>
+      <h3>Döner im Brot</h3>
+      <p>Saftiges Drehspieß-Fleisch im knusprigen Fladenbrot mit frischem Salat, Tomaten und Zwiebelringen.</p>
+      <div class="menu-card-price">ab 5,50 €</div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-num">02</div>
+      <h3>Döner in der Box</h3>
+      <p>Reichhaltige Döner-Box mit Pommes, Salat, Tomaten, Zwiebeln und Sauce nach Wahl.</p>
+      <div class="menu-card-price">ab 7,50 €</div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-num">03</div>
+      <h3>Lahmacun</h3>
+      <p>Hauchdünner türkischer Flammkuchen mit würzigem Hackfleisch, frischem Gemüse und Zitronensaft.</p>
+      <div class="menu-card-price">ab 3,50 €</div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-num">04</div>
+      <h3>Adana Kebap</h3>
+      <p>Würziges Hackfleisch-Kebap vom Holzkohlegrill, serviert mit Reis, Salat und gegrilltem Gemüse.</p>
+      <div class="menu-card-price">ab 9,50 €</div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-num">05</div>
+      <h3>Falafel Wrap</h3>
+      <p>Goldbraune Falafel im Fladenbrot mit Hummus, frischen Kräutern, Tomate und Tahini-Sauce.</p>
+      <div class="menu-card-price">ab 6,00 €</div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-num">06</div>
+      <h3>Vegetarisch</h3>
+      <p>Gegrilltes Gemüse, Bulgur, Hummus und Feta im Fladenbrot — kräftig gewürzt, voll im Geschmack.</p>
+      <div class="menu-card-price">ab 6,50 €</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery" id="gallery">
+  <div class="gallery-title">
+    <p class="section-eyebrow">Impressionen</p>
+    <h2>Frisch. Echt. <em>Anatolisch.</em></h2>
+  </div>
+  <div class="gallery-mosaic">
+    <div class="g-img g-1">
+      <img src="https://images.unsplash.com/photo-1561651823-34feb02250e4?w=900&q=85&fit=crop" alt="Döner am Spieß">
+    </div>
+    <div class="g-img g-2">
+      <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=700&q=85&fit=crop" alt="Frischer Kebap">
+    </div>
+    <div class="g-img g-3">
+      <img src="https://images.unsplash.com/photo-1590599145008-e4ec48e3e0ee?w=700&q=85&fit=crop" alt="Türkisches Brot">
+    </div>
+    <div class="g-img g-4">
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=700&q=85&fit=crop" alt="Gegrilltes Fleisch">
+    </div>
+    <div class="g-img g-5">
+      <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1200&q=85&fit=crop" alt="Beilagen und Salate">
+    </div>
+  </div>
+</div>
+
+<!-- SPECIALS -->
+<section class="specials" id="specials">
+  <div class="specials-inner">
+    <p class="section-eyebrow">Was uns ausmacht</p>
+    <h2>Drei Gründe, <em>wiederzukommen</em></h2>
+    <div class="specials-grid">
+      <div class="special-card">
+        <span class="special-icon">🕐</span>
+        <h3>Immer geöffnet</h3>
+        <p>
+          Täglich ab 11:30 Uhr durchgehend geöffnet. Freitag und Samstag sogar bis 5:00 Uhr morgens — für alle, die noch Hunger haben.
+        </p>
+      </div>
+      <div class="special-card">
+        <span class="special-icon">📍</span>
+        <h3>Bester Standort</h3>
+        <p>
+          Direkt am Alter Markt — im Zentrum von Mönchengladbach. Leicht erreichbar, gut sichtbar, ideal für eine schnelle Mittagspause oder den Abend.
+        </p>
+      </div>
+      <div class="special-card">
+        <span class="special-icon">🫀</span>
+        <h3>Mit Leidenschaft</h3>
+        <p>
+          Jedes Gericht wird mit echtem Herzblut zubereitet. Keine Fertigprodukte. Nur frische Zutaten, täglich neu verarbeitet.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <p class="section-eyebrow">Gästestimmen</p>
+    <h2>Was unsere <em>Gäste sagen</em></h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Bester Döner in der ganzen Stadt! Der Laden hat mich nicht enttäuscht — frisches Fleisch, leckere Sauce, und das zu einem fairen Preis. Ich komme regelmäßig."</p>
+        <div class="review-author">Mehmet A.</div>
+        <div class="review-platform">Google Bewertung</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Freitagsnacht um 3 Uhr — und die Qualität ist genauso gut wie mittags. Wartet gut ab, das Fleisch ist immer frisch. Absolut zu empfehlen!"</p>
+        <div class="review-author">Julia W.</div>
+        <div class="review-platform">Google Bewertung</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">„Immer eine gute Wahl am Alter Markt. Schnell, günstig, lecker. Das Lahmacun ist besonders toll. Wird definitiv wiederkommen."</p>
+        <div class="review-author">Dennis K.</div>
+        <div class="review-platform">Google Bewertung</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="info" id="info">
+  <div class="info-inner">
+    <div class="info-block">
+      <p class="section-eyebrow">Öffnungszeiten</p>
+      <h3>Wann wir für Sie da sind</h3>
+      <div class="info-line">
+        <span class="info-day">Montag – Donnerstag</span>
+        <span class="info-time">11:30 – 01:00 Uhr</span>
+      </div>
+      <div class="info-line">
+        <span class="info-day">Freitag</span>
+        <span class="info-time late">11:30 – 05:00 Uhr</span>
+      </div>
+      <div class="info-line">
+        <span class="info-day">Samstag</span>
+        <span class="info-time late">11:30 – 05:00 Uhr</span>
+      </div>
+      <div class="info-line">
+        <span class="info-day">Sonntag</span>
+        <span class="info-time">11:30 – 01:00 Uhr</span>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <p class="section-eyebrow">Kontakt</p>
+      <h3>Erreichen Sie uns</h3>
+      <div class="info-contact">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Telefon</div>
+            <div class="contact-value"><a href="tel:+4921611758740">02161 175874</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Adresse</div>
+            <div class="contact-value">Alter Markt<br>41061 Mönchengladbach</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📘</div>
+          <div>
+            <div class="contact-label">Facebook</div>
+            <div class="contact-value"><a href="https://www.facebook.com/anatolienkebap" target="_blank" rel="noopener">anatolienkebap</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <p class="section-eyebrow">Anreise</p>
+      <h3>So finden Sie uns</h3>
+      <div class="info-contact">
+        <div class="contact-item">
+          <div class="contact-icon">🚊</div>
+          <div>
+            <div class="contact-label">ÖPNV</div>
+            <div class="contact-value">Haltestelle Alter Markt, direkt erreichbar</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🅿️</div>
+          <div>
+            <div class="contact-label">Parken</div>
+            <div class="contact-value">Parkhäuser in der Innenstadt in der Nähe</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">♿</div>
+          <div>
+            <div class="contact-label">Barrierefreiheit</div>
+            <div class="contact-value">Takeaway-Schalter, ebenerdiger Zugang</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="besuchen">
+  <p class="section-eyebrow">Jetzt besuchen</p>
+  <h2>Hunger auf echten <em>Türkischen Geschmack?</em></h2>
+  <p>Wir freuen uns auf Ihren Besuch. Direkt am Alter Markt — täglich frisch, täglich für Sie.</p>
+  <div class="cta-actions">
+    <a href="tel:+4921611758740" class="btn-primary">02161 175874</a>
+    <a href="https://maps.google.com/?q=Alter+Markt+41061+Mönchengladbach" target="_blank" rel="noopener" class="btn-outline">Route planen</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-name">Anatolien <span>Kebap</span></div>
+      <p>Authentische türkische Küche täglich frisch am Alter Markt in Mönchengladbach. Seit Jahren Ihr verlässlicher Anlaufpunkt für echten Döner.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#about">Über uns</a></li>
+        <li><a href="#menu">Speisekarte</a></li>
+        <li><a href="#gallery">Galerie</a></li>
+        <li><a href="#reviews">Bewertungen</a></li>
+        <li><a href="#info">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Öffnungszeiten</h4>
+      <ul>
+        <li><a href="#">Mo–Do: 11:30–01:00</a></li>
+        <li><a href="#">Fr–Sa: 11:30–05:00</a></li>
+        <li><a href="#">So: 11:30–01:00</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="tel:+4921611758740">02161 175874</a></li>
+        <li><a href="#">Alter Markt, 41061 MG</a></li>
+        <li><a href="https://www.facebook.com/anatolienkebap" target="_blank" rel="noopener">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Anatolien Kebap Mönchengladbach. Alle Rechte vorbehalten.</p>
+    <div style="display:flex;gap:2rem;">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+  <p>
+    Diese Website verwendet Cookies für eine bessere Nutzererfahrung. Weitere Infos in unserer <a href="#">Datenschutzerklärung</a>.
+  </p>
+  <div class="cookie-btns">
+    <button id="cookie-accept">Akzeptieren</button>
+    <button id="cookie-decline">Ablehnen</button>
+  </div>
+</div>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hero bg parallax on load
+  const heroBg = document.getElementById('hero-bg');
+  window.addEventListener('load', () => {
+    heroBg.classList.add('loaded');
+  });
+
+  // Cookie banner
+  const banner = document.getElementById('cookie-banner');
+  if (localStorage.getItem('cookie-consent')) {
+    banner.style.display = 'none';
+  }
+  document.getElementById('cookie-accept').addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'accepted');
+    banner.style.display = 'none';
+  });
+  document.getElementById('cookie-decline').addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'declined');
+    banner.style.display = 'none';
+  });
+</script>
+</body>
+</html>
